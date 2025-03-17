@@ -7,17 +7,17 @@ on:
         description: 'ImmortalWrt 仓库的拥有者 (Owner of ImmortalWrt repo)'
         type: string
         required: true
-        default: 'padavanonly'
+        default: 'immortalwrt'
       repo:
         description: 'ImmortalWrt 仓库的名字 (Name of ImmortalWrt repo)'
         type: string
         required: true
-        default: 'immortalwrtARM'
+        default: 'immortalwrt'
       branch:
         description: 'ImmortalWrt 仓库的分支 (Branch of ImmortalWrt repo)'
         type: string
         required: true
-        default: 'mt7986'
+        default: 'openwrt-24.10'
       multithreading:
         description: '开启多线程编译 (Enable multithreading build)'
         type: boolean
@@ -30,7 +30,7 @@ on:
 jobs:
   build:
     if: ${{inputs.ssh == false}}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: 🚀 编译 (Build)
     steps:
       - name: 下载编译所需的依赖 (Install the software packages required for compilation)
@@ -91,7 +91,7 @@ jobs:
   build-ssh:
     if: ${{inputs.ssh == true}}
     name: 🚀 编译 (Build) - SSH
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: 下载编译所需的依赖 (Install the software packages required for compilation)
         run: |
